@@ -1,0 +1,17 @@
+00 movei 00  
+01 mover 00
+02 movei 01 
+03 mover 01
+04 mover 02
+05 movea 01
+06 add   02
+07 mover 03
+08 movea 01
+09 mover 00
+10 movea 02
+11 mover 01
+12 movea 03
+13 mover 02
+14 goto  05
+
+
