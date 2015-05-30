@@ -12,14 +12,14 @@ Loader::Loader()
 
 void Loader::get_intrucao(string line, Memoria *elefante )
 {
-    char end[2], opc[4], val[2];
+    char end[3], opc[5], val[2];
 
     int tam_end = line.copy(end,3,0);   // 000 movei 00
                                         // ^^^
     int tam_opc = line.copy(opc,5,4);   // 000 movei 00
                                         //     ^^^^^
     int tam_val = line.copy(val,2,10);  // 000 movei 00
-                                       //           ^^
+                                       //            ^^
     end[tam_end]= '\0'; //adiciona um fim ao vetor de chars
     string endereco(end); //copia vetor de char para string
     opc[tam_opc]= '\0';
@@ -71,7 +71,12 @@ void Loader::get_intrucao(string line, Memoria *elefante )
 
 
      //cout<< " intrucao: "<< instrucao<<endl;
-     //cout<< " iend: "<<iend<<" iopc: "<<iopc<<" ival: "<<iopc<<endl<<endl;
+    // cout<< " iend: "<<iend<<" iopc: "<<iopc<<" ival: "<<iopc<<endl<<endl;
+     //cout<<" ival dec: "<<ival<<endl<<endl;
+
+
+     ival=ConvertToBinary(ival);
+     //cout<<" ival bin: "<<ival<<endl<<endl;
 
       long int mem = ((iopc*100000000)+ival);
       //cout<< " mem: "<< mem<<endl;
@@ -79,6 +84,21 @@ void Loader::get_intrucao(string line, Memoria *elefante )
       elefante->printline(iend);
       //cout<<"\n";
 
+
+}
+
+int Loader::ConvertToBinary(int n)
+{
+
+    int rem, i=1, binary=0;
+       while (n!=0)
+       {
+           rem=n%2;
+           n/=2;
+           binary+=rem*i;
+           i*=10;
+       }
+       return binary;
 
 }
 

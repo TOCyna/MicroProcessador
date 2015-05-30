@@ -11,6 +11,7 @@ class Loader
 public:
     Loader();
     void get_intrucao(string line, Memoria *elefante); //carrega as instrucoes do assembly na memoria
+    int ConvertToBinary(int n);
 };
 
 #endif // LOADER_H
