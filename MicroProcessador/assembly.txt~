@@ -13,5 +13,3 @@
 12 movea 03
 13 mover 02
 14 goto  05
-
-

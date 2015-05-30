@@ -14,6 +14,6 @@ UnidadeControle::UnidadeControle(Memoria *elefante)
     IR ir;
 
     mar.MARupdate(pc.PCreturn());
-    ir.IRgetintrucao(mar.MARreturn(), &elefante);
+    ir.IRgetintrucao(mar.MARreturn(), elefante);
 
 }

@@ -14,12 +14,12 @@ void Loader::get_intrucao(string line, Memoria *elefante )
 {
     char end[2], opc[4], val[2];
 
-    int tam_end = line.copy(end,2,0);   // 00 movei 00
-                                        // ^^
-    int tam_opc = line.copy(opc,5,3);   // 00 movei 00
-                                        //    ^^^^^
-    int tam_val = line.copy(val,2,9);  // 00 movei 00
-                                       //          ^^
+    int tam_end = line.copy(end,3,0);   // 000 movei 00
+                                        // ^^^
+    int tam_opc = line.copy(opc,5,4);   // 000 movei 00
+                                        //     ^^^^^
+    int tam_val = line.copy(val,2,10);  // 000 movei 00
+                                       //           ^^
     end[tam_end]= '\0'; //adiciona um fim ao vetor de chars
     string endereco(end); //copia vetor de char para string
     opc[tam_opc]= '\0';
@@ -27,18 +27,18 @@ void Loader::get_intrucao(string line, Memoria *elefante )
     val[tam_val]= '\0';
     string valor(val);
 
-    /*
+/*
     cout<<" endereco: "<< endereco;
     cout<<" opcode: "<< opcode;
     cout<<" valor: "<< valor;
     cout<<endl;
+    */
 
-*/
-    int iend = (end[1] - '0') + (end[0] - '0')*10; //char to int
-    //cout<< "ender: "<< iend;
+    int iend = (end[2] - '0') +(end[1] - '0')*10 + (end[0] - '0')*100; //char to int
+    //cout<< " ender: "<< iend<<endl<<endl;
 
     int ival = (val[1] - '0') + (val[0] - '0')*10; //char to int
-    //cout<< " val: "<< ival<<endl;
+    //cout<< " val: "<< ival<<endl<<endl;
 
     long int iopc;
     if(opcode=="nop  ") //comparing cha[] with opcode and returning opcode(int)
@@ -71,12 +71,12 @@ void Loader::get_intrucao(string line, Memoria *elefante )
 
 
      //cout<< " intrucao: "<< instrucao<<endl;
-     //cout<< " iend: "<<iend<<" iopc: "<<iopc<<" ival: "<<iopc<<endl;
+     //cout<< " iend: "<<iend<<" iopc: "<<iopc<<" ival: "<<iopc<<endl<<endl;
 
       long int mem = ((iopc*100000000)+ival);
       //cout<< " mem: "<< mem<<endl;
       elefante->alocar(iend,mem);
-      //elefante.printline(iend);
+      elefante->printline(iend);
       //cout<<"\n";
 
 

@@ -11,7 +11,7 @@ class IR
 public:
     IR();
     long int instrucao; // registrador do opcode
-    void IRgetintrucao(long int end, Memoria **elefante); //busca opcode no endereço
+    void IRgetintrucao(long int end, Memoria *elefante); //busca opcode no endereço
     long int IRreturn();    //retorna opcode no registrador
 
 };

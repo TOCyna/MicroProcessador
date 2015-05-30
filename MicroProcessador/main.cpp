@@ -47,13 +47,15 @@ int main()
 
     UnidadeControle unidade_controle(&elefante); // inicia a unidade de controle com a memoria vinda do bootloader
 
+
+/*
    int c= 42;
    int *la;
    int **lala;
    la=&c;
    lala=&la;
    cout<< lala<<endl;
-
+*/
 
 
 
